@@ -1,175 +1,76 @@
-import React from 'react'
-
+// src/components/Home.js
+import React, { useState } from 'react';
+import Dropdownselector from './Dropdownselector';
+import Cryptolinechart from './Cryptolinechart';
+import TopGainersTable from './TopGainersTable';
 import { BsGear, BsListUl } from 'react-icons/bs';
 import { FaTable } from 'react-icons/fa';
 import { AiOutlineLineChart } from 'react-icons/ai';
 import { IoIosTrendingUp } from 'react-icons/io';
-import {
-  CartesianGrid,
-  Legend,
-  Line,
-  LineChart,
-  ReferenceLine,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from 'recharts';
+import { motion, AnimatePresence } from 'framer-motion'; // 🆕 Importamos animaciones
 
+function Home({ setActiveTitle }) {
+  const [selectedCoin, setSelectedCoin] = useState(null);
+  const [selectedCard, setSelectedCard] = useState(null);
 
-function Home() {
- 
+  const cards = [
+    { title: 'Dropdownselector', icon: <BsListUl className="card_icon" /> },
+    { title: 'CryptoTable', icon: <FaTable className="card_icon" /> },
+    { title: 'LineChart', icon: <AiOutlineLineChart className="card_icon" /> },
+    { title: 'TopGainersTable', icon: <IoIosTrendingUp className="card_icon" /> },
+    { title: 'Alerts', icon: <IoIosTrendingUp className="card_icon" /> },
+    { title: 'Settings', icon: <BsGear className="card_icon" /> },
+  ];
 
-const data = [
-  {
-    name: 'Page A',
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    name: 'Page B',
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: 'Page C',
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: 'Page D',
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: 'Page E',
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: 'Page F',
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: 'Page G',
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
-];
+  const handleCardClick = (index) => {
+    setSelectedCard(index);
+    setActiveTitle(cards[index].title);
+  };
 
+  return (
+    <main className="main-container">
+      <div className="main-title">
+        <h3>CriptoNet</h3>
+      </div>
 
-    //Cards
- return (
-    <main className='main-container'>
-        <div className='main-title'>
-            <h3>Dashboard</h3>
-        </div>
-        <div className='main-cards'>   
-            <div className='card'>
-                <div className='card-inner'>
-                    <h3>DropdownSelector</h3>
-                    <BsListUl className='card_icon'/>
-                </div>
-             <h2>10</h2>
+      <div className="main-cards">
+        {cards.map((card, index) => (
+          <div
+            key={index}
+            className={`card ${selectedCard === index ? 'card-active' : ''}`}
+            onClick={() => handleCardClick(index)}
+          >
+            <div className="card-inner">
+              <h3>{card.title}</h3>
+              {card.icon}
             </div>
-              <div className='card'>
-                <div className='card-inner'>
-                    <h3>CryptoTable</h3>
-                    <FaTable className='card_icon'/>
-                </div>
-             <h2>10</h2>
-            </div>
-              <div className='card'>
-                <div className='card-inner'>
-                    <h3>LineChart</h3>
-                    <AiOutlineLineChart className='card_icon'/>
-                </div>
-             <h2>10</h2>
-            </div>
-             <div className='card'>
-                <div className='card-inner'>
-                    <h3>TopGainersTable</h3>
-                    <IoIosTrendingUp className='card_icon'/>
-                </div>
-             <h2>10</h2>
-            </div>
-              <div className='card'>
-                <div className='card-inner'>
-                    <h3>Alerts</h3>
-                    <IoIosTrendingUp className='card_icon'/>
-                </div>
-             <h2>10</h2>
-            </div>
-             <div className='card'>
-                <div className='card-inner'>
-                    <h3>Settings</h3>
-                    <BsGear className='card_icon'/>
-                </div>
-             <h2>10</h2>
-            </div>
-        </div>
-        
-    <div className= 'charts'>
-        <ResponsiveContainer width="100%" height="100%">
-      <LineChart
-        width={500}
-        height={300}
-        data={data}
-        margin={{
-          top: 5,
-          right: 30,
-          left: 20,
-          bottom: 5,
-        }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Line type="monotone" dataKey="pv" stroke="#8884d8" strokeDasharray="5 5" />
-        <Line type="monotone" dataKey="uv" stroke="#82ca9d" strokeDasharray="3 4 5 2" />
-      </LineChart>
-    </ResponsiveContainer>
+            <h2>{selectedCard === index ? 'Activo' : 'Seleccionar'}</h2>
+          </div>
+        ))}
+      </div>
 
-        <ResponsiveContainer width="100%" height="100%">
-      <LineChart
-        width={500}
-        height={300}
-        data={data}
-        margin={{
-          top: 20,
-          right: 50,
-          left: 20,
-          bottom: 5,
-        }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <ReferenceLine x="Page C" stroke="red" label="Max PV PAGE" />
-        <ReferenceLine y={9800} label="Max" stroke="red" />
-        <Line type="monotone" dataKey="pv" stroke="#8884d8" />
-        <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-      </LineChart>
-    </ResponsiveContainer>
-
-
-    </div>
-
- </main>
-
-  )
+      {/* 🎯 Transición de contenido usando AnimatePresence */}
+      <AnimatePresence mode="wait">
+        {selectedCard !== null && (
+          <motion.div
+            key={selectedCard}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.4 }}
+            style={{ marginTop: '20px' }}
+          >
+            {selectedCard === 0 && <Dropdownselector setSelectedCoin={setSelectedCoin} />}
+            {selectedCard === 1 && <p>CryptoTable (próximamente)</p>}
+            {selectedCard === 2 && selectedCoin && <Cryptolinechart coinId={selectedCoin.id} />}
+            {selectedCard === 3 && <TopGainersTable />}
+            {selectedCard === 4 && <p>Alerts (en desarrollo)</p>}
+            {selectedCard === 5 && <p>Settings</p>}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </main>
+  );
 }
 
 export default Home;

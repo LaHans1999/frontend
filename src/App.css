@@ -54,7 +54,24 @@ body{
 
 
 
-/* INICIO Sidebar  */
+/* dropdown  */
+.dropdown-container {
+  margin: 1rem 0;
+  color: white;
+}
+
+select {
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #1d2634;
+  color: white;
+  border: 1px solid #555;
+}
+
+
+
+/* INICIO Sidebar  
 #sidebar {
   grid-area: sidebar;
   height: 100%;
@@ -108,7 +125,7 @@ body{
   z-index: 12 !important;
 }
 
-/* TERMINA Sidebar  */
+ TERMINA Sidebar  */
 
 
 /* INICIO Main  */
@@ -266,3 +283,15 @@ body{
   font-size: 1.2rem;
   margin-left: 10px;
 }
+
+
+.top-gainers-table table {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 10px;
+  padding: 10px;
+}
+.top-gainers-table th,
+.top-gainers-table td {
+  padding: 8px;
+}
+

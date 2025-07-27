@@ -6,14 +6,14 @@ import { AiOutlineLineChart } from 'react-icons/ai';
 import { IoIosTrendingUp } from 'react-icons/io';
 import { IoMdNotificationsOutline } from 'react-icons/io';
 
-function Sidebar() {
+function Sidebar({openSidebarToggle, OpenSideBar}) {
   return (
-    <aside className='sidebar'>
+    <aside id='sidebar' className={openSidebarToggle ? 'sidebar-responsive' : ''}>
       <div className='sidebar-title'>
         <div className='sidebar-brand'>
           <MdOutlineDashboard className='icon_header' /> CryptoNet
         </div>
-        <span className='icon close_icon'>-X-</span>
+        <span className='icon close_icon' onClick={OpenSideBar} >-X-</span>
       </div>
 
       <ul className='sidebar-list'>
