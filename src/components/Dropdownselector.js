@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-function Dropdownselector({ setSelectedCoin }) {
+function Dropdownselector({ setSelectedCoin, selectedCoin }) {
   const [coins, setCoins] = useState([]);
 
   useEffect(() => {
@@ -46,20 +46,20 @@ function Dropdownselector({ setSelectedCoin }) {
       </select>
 
       {/* Mostrar información si hay una moneda seleccionada */}
-      {coins.length > 0 && (
+      {selectedCoin != null && (
         <div style={{ marginTop: '1rem' }}>
           <p>
-            <strong>Nombre:</strong> {coins[0].name}
+            <strong>Nombre:</strong> {selectedCoin.name}
           </p>
           <p>
-            <strong>Símbolo:</strong> {coins[0].symbol.toUpperCase()}
+            <strong>Símbolo:</strong> {selectedCoin.symbol.toUpperCase()}
           </p>
           <p>
-            <strong>Precio actual:</strong> ${coins[0].current_price}
+            <strong>Precio actual:</strong> ${selectedCoin.current_price}
           </p>
           <p>
             <strong>Variación 24h:</strong>{' '}
-            {coins[0].price_change_percentage_24h.toFixed(2)}%
+            {selectedCoin.price_change_percentage_24h.toFixed(2)}%
           </p>
         </div>
       )}

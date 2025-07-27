@@ -17,11 +17,7 @@ function Sidebar({openSidebarToggle, OpenSideBar}) {
       </div>
 
       <ul className='sidebar-list'>
-        <li className='sidebar-list-item'>
-          <a href="">
-            <MdOutlineDashboard className='icon' /> Dashboard
-          </a>
-        </li>
+        
         <li className='sidebar-list-item'>
           <a href="">
             <BsListUl className='icon' /> DropdownSelector

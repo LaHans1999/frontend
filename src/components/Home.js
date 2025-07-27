@@ -60,8 +60,8 @@ function Home({ setActiveTitle }) {
             transition={{ duration: 0.4 }}
             style={{ marginTop: '20px' }}
           >
-            {selectedCard === 0 && <Dropdownselector setSelectedCoin={setSelectedCoin} />}
-            {selectedCard === 1 && <p>CryptoTable (próximamente)</p>}
+            {selectedCard === 0 && <Dropdownselector setSelectedCoin={setSelectedCoin} selectedCoin={selectedCoin} />}
+            {selectedCard === 1 && <p>CryptoTable </p>}
             {selectedCard === 2 && selectedCoin && <Cryptolinechart coinId={selectedCoin.id} />}
             {selectedCard === 3 && <TopGainersTable />}
             {selectedCard === 4 && <p>Alerts (en desarrollo)</p>}
