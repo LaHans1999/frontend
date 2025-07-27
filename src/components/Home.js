@@ -1,12 +1,20 @@
 import React from 'react'
 
-import { BsBarChartLine, BsGear, BsListUl } from 'react-icons/bs';
-import { MdOutlineDashboard } from 'react-icons/md';
+import { BsGear, BsListUl } from 'react-icons/bs';
 import { FaTable } from 'react-icons/fa';
 import { AiOutlineLineChart } from 'react-icons/ai';
 import { IoIosTrendingUp } from 'react-icons/io';
-import { IoMdNotificationsOutline } from 'react-icons/io';
-import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import {
+  CartesianGrid,
+  Legend,
+  Line,
+  LineChart,
+  ReferenceLine,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts';
 
 
 function Home() {
@@ -63,7 +71,6 @@ const data = [
     <main className='main-container'>
         <div className='main-title'>
             <h3>Dashboard</h3>
-
         </div>
         <div className='main-cards'>   
             <div className='card'>
@@ -132,11 +139,35 @@ const data = [
         <Line type="monotone" dataKey="uv" stroke="#82ca9d" strokeDasharray="3 4 5 2" />
       </LineChart>
     </ResponsiveContainer>
+
+        <ResponsiveContainer width="100%" height="100%">
+      <LineChart
+        width={500}
+        height={300}
+        data={data}
+        margin={{
+          top: 20,
+          right: 50,
+          left: 20,
+          bottom: 5,
+        }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <ReferenceLine x="Page C" stroke="red" label="Max PV PAGE" />
+        <ReferenceLine y={9800} label="Max" stroke="red" />
+        <Line type="monotone" dataKey="pv" stroke="#8884d8" />
+        <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+      </LineChart>
+    </ResponsiveContainer>
+
+
     </div>
 
-
  </main>
-
 
   )
 }

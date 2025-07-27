@@ -1,7 +1,8 @@
 import React from 'react';
+import { FaSun, FaMoon } from 'react-icons/fa';
 import { BsFillBellFill, BsFillEnvelopeFill, BsPersonCircle, BsSearch, BsJustify } from 'react-icons/bs';
 
-function Header() {
+function Header({ OpenSideBar, darkMode, toggleDarkMode }) {
   return(
    <header className='header'>
     <div className='menu-icon'>
@@ -9,12 +10,16 @@ function Header() {
 
     </div>
     <div className='header-left'>
-      <BsSearch className='icon'/>
+      <BsSearch className='icon' onClick={OpenSideBar}  />
     </div>
     <div className='header-right'>
+      <button className='icon dark-mode-btn' onClick={toggleDarkMode}>
+        {darkMode ? <FaSun /> : <FaMoon />} 
+        </button>
       <BsFillEnvelopeFill className='icon'/>
       <BsFillBellFill className='icon'/>
       <BsPersonCircle className='icon'/>
+      
 
     </div>
     
