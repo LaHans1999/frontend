@@ -1,0 +1,87 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1.5rem;
+    background-color: var(--header-bg);
+    border-bottom: 1px solid var(--border-color);
+    height: 48px;
+}
+
+
+
+.menu-icon {
+    cursor: pointer;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header-left h3 {
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.icon {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.icon:hover {
+    color: var(--accent-color);
+}
+
+.dark-mode-btn {
+    background: transparent;
+    border: none;
+    padding: 5px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.dark-mode-btn:hover {
+    background-color: var(--bg-secondary);
+}
+
+.dark-mode-btn .icon {
+    margin: 0;
+}
+
+/* Específicamente para modo claro */
+:root:not(.dark-mode) .header {
+    background-color: var(--light-bg-secondary);
+    border-bottom: 1px solid var(--light-border);
+}
+
+:root:not(.dark-mode) .header .icon {
+    color: var(--light-text-primary);
+}
+
+:root:not(.dark-mode) .header-left h3 {
+    color: var(--light-text-primary);
+}
+
+:root:not(.dark-mode) .header .icon:hover {
+    color: var(--light-accent);
+}
+
+:root:not(.dark-mode) .dark-mode-btn:hover {
+    background-color: var(--light-bg-primary);
+}

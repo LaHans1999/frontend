@@ -41,7 +41,8 @@ function TopGainersTable() {
 
   return (
     <div className="top-gainers-table" style={{ marginTop: '40px' }}>
-      <h3 style={{ marginBottom: '10px' }}>Top 5 Ganadores (24h)</h3>
+      <h3 style={{ marginBottom: '10px' }}>Top 5 ganadores del mercado</h3>
+      <p style={{ marginBottom: '20px', color: '#888' }}>Tabla que muestre las 5 criptomonedas con mayor variación positiva en las últimas 24h</p>
       <table style={{ width: '100%', borderCollapse: 'collapse', color: 'white' }}>
         <thead>
           <tr style={{ textAlign: 'left', borderBottom: '1px solid #555' }}>

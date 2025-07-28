@@ -1,0 +1,156 @@
+:root {
+  /* Light Mode */
+  --light-bg-primary: #f0f2f5;
+  --light-bg-secondary: #ffffff;
+  --light-text-primary: #1e293b;
+  --light-text-secondary: #475569;
+  --light-border: #cbd5e1;
+  --light-card-bg: #ffffff;
+  --light-card-hover: #f8fafc;
+  --light-accent: #2563eb;
+  --light-success: #16a34a;
+  --light-danger: #dc2626;
+  --light-shadow: rgba(0, 0, 0, 0.1);
+  --light-header-bg: #ffffff;
+  --light-carousel-bg: rgba(255, 255, 255, 0.95);
+  --light-carousel-item-bg: #ffffff;
+  --light-chart-grid: #e2e8f0;
+
+  /* Dark Mode */
+  --dark-bg-primary: #1a1a1a;
+  --dark-bg-secondary: #242424;
+  --dark-text-primary: #e9ecef;
+  --dark-text-secondary: #adb5bd;
+  --dark-border: #2d3436;
+  --dark-card-bg: #242424;
+  --dark-card-hover: #2d3436;
+  --dark-accent: #00b4d8;
+  --dark-success: #00b894;
+  --dark-danger: #d63031;
+  --dark-shadow: rgba(0, 0, 0, 0.3);
+  --dark-header-bg: #242424;
+  --dark-carousel-bg: rgba(26, 26, 26, 0.95);
+  --dark-carousel-item-bg: #242424;
+  --dark-chart-grid: #2d3436;
+}
+
+/* Aplicar modo claro por defecto */
+.app-container {
+  --bg-primary: var(--light-bg-primary);
+  --bg-secondary: var(--light-bg-secondary);
+  --text-primary: var(--light-text-primary);
+  --text-secondary: var(--light-text-secondary);
+  --border-color: var(--light-border);
+  --card-bg: var(--light-card-bg);
+  --card-hover: var(--light-card-hover);
+  --accent-color: var(--light-accent);
+  --success-color: var(--light-success);
+  --danger-color: var(--light-danger);
+  --shadow-color: var(--light-shadow);
+  --header-bg: var(--light-header-bg);
+  --carousel-bg: var(--light-carousel-bg);
+  --carousel-item-bg: var(--light-carousel-item-bg);
+  --chart-grid: var(--light-chart-grid);
+
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+/* Aplicar modo oscuro */
+.app-container.dark-mode {
+  --bg-primary: var(--dark-bg-primary);
+  --bg-secondary: var(--dark-bg-secondary);
+  --text-primary: var(--dark-text-primary);
+  --text-secondary: var(--dark-text-secondary);
+  --border-color: var(--dark-border);
+  --card-bg: var(--dark-card-bg);
+  --card-hover: var(--dark-card-hover);
+  --accent-color: var(--dark-accent);
+  --success-color: var(--dark-success);
+  --danger-color: var(--dark-danger);
+  --shadow-color: var(--dark-shadow);
+  --header-bg: var(--dark-header-bg);
+  --carousel-bg: var(--dark-carousel-bg);
+  --carousel-item-bg: var(--dark-carousel-item-bg);
+  --chart-grid: var(--dark-chart-grid);
+}
+
+/* Header Styles */
+.header {
+  background-color: var(--header-bg);
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+/* Cards Styles */
+.card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.card:hover {
+  background-color: var(--card-hover);
+}
+
+.card-active {
+  border-color: var(--accent-color);
+}
+
+/* Carousel Styles */
+.coin-carousel {
+  background-color: var(--carousel-bg);
+  border-color: var(--border-color);
+}
+
+.ticker-item {
+  background-color: var(--carousel-item-bg);
+  color: var(--text-primary);
+}
+
+.price-up {
+  color: var(--success-color) !important;
+}
+
+.price-down {
+  color: var(--danger-color) !important;
+}
+
+/* Icons */
+.icon {
+  color: var(--text-secondary);
+}
+
+.icon:hover {
+  color: var(--accent-color);
+}
+
+/* Dark mode button */
+.dark-mode-btn {
+  background: transparent;
+  border: none;
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dark-mode-btn:hover {
+  background-color: var(--bg-secondary);
+}
+
+/* Charts */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: var(--chart-grid);
+}
+
+/* Transitions */
+.header,
+.card,
+.coin-carousel,
+.ticker-item {
+  transition: all 0.3s ease;
+}

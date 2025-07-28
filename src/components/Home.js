@@ -1,25 +1,29 @@
 // src/components/Home.js
-import React, { useState } from 'react';
-import Dropdownselector from './Dropdownselector';
-import Cryptolinechart from './Cryptolinechart';
-import TopGainersTable from './TopGainersTable';
+import React, { useState, useEffect } from 'react';
+import Dropdownselector from './pages/Dropdownselector';
+import Cryptolinechart from './pages/Cryptolinechart';
+import CryptoTable from './pages/CryptoTable';
+import Alerts from './pages/Alerts';
 import { BsGear, BsListUl } from 'react-icons/bs';
 import { FaTable } from 'react-icons/fa';
 import { AiOutlineLineChart } from 'react-icons/ai';
 import { IoIosTrendingUp } from 'react-icons/io';
-import { motion, AnimatePresence } from 'framer-motion'; // 🆕 Importamos animaciones
+import { motion, AnimatePresence } from 'framer-motion';
+import CoinCarousel from './pages/CoinCarousel';
+import './styles/DarkMode.css';
+import './styles/MainContainer.css';
 
 function Home({ setActiveTitle }) {
   const [selectedCoin, setSelectedCoin] = useState(null);
   const [selectedCard, setSelectedCard] = useState(null);
 
   const cards = [
-    { title: 'Dropdownselector', icon: <BsListUl className="card_icon" /> },
-    { title: 'CryptoTable', icon: <FaTable className="card_icon" /> },
-    { title: 'LineChart', icon: <AiOutlineLineChart className="card_icon" /> },
-    { title: 'TopGainersTable', icon: <IoIosTrendingUp className="card_icon" /> },
-    { title: 'Alerts', icon: <IoIosTrendingUp className="card_icon" /> },
-    { title: 'Settings', icon: <BsGear className="card_icon" /> },
+    { title: 'Selector', icon: <BsListUl className="card_icon" /> },
+    { title: 'Mercado', icon: <FaTable className="card_icon" /> },
+    { title: 'Gráficos', icon: <AiOutlineLineChart className="card_icon" /> },
+    { title: 'Ranking', icon: <IoIosTrendingUp className="card_icon" /> },
+    { title: 'Alertas', icon: <IoIosTrendingUp className="card_icon" /> },
+    { title: 'Ajustes', icon: <BsGear className="card_icon" /> },
   ];
 
   const handleCardClick = (index) => {
@@ -32,7 +36,7 @@ function Home({ setActiveTitle }) {
       <div className="main-title">
         <h3>CriptoNet</h3>
       </div>
-
+      <CoinCarousel />
       <div className="main-cards">
         {cards.map((card, index) => (
           <div
@@ -61,10 +65,10 @@ function Home({ setActiveTitle }) {
             style={{ marginTop: '20px' }}
           >
             {selectedCard === 0 && <Dropdownselector setSelectedCoin={setSelectedCoin} selectedCoin={selectedCoin} />}
-            {selectedCard === 1 && <p>CryptoTable </p>}
+            {selectedCard === 1 && <CryptoTable />}
             {selectedCard === 2 && selectedCoin && <Cryptolinechart coinId={selectedCoin.id} />}
-            {selectedCard === 3 && <TopGainersTable />}
-            {selectedCard === 4 && <p>Alerts (en desarrollo)</p>}
+            {selectedCard === 3 && <CryptoTable />}
+            {selectedCard === 4 && <Alerts />}
             {selectedCard === 5 && <p>Settings</p>}
           </motion.div>
         )}
