@@ -1,4 +1,3 @@
-// src/components/Cryptolinechart.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import {
@@ -31,7 +30,7 @@ function Cryptolinechart({ coinId }) {
           }
         );
 
-        // Formatear los datos para el gráfico
+ // Formatear los datos para el gráfico
         const formattedData = res.data.prices.map(([timestamp, price]) => ({
           date: new Date(timestamp).toLocaleDateString('en-US', {
             weekday: 'short',
@@ -41,7 +40,7 @@ function Cryptolinechart({ coinId }) {
 
         setChartData(formattedData);
       } catch (error) {
-        console.error('Error fetching chart data:', error);
+        console.error('Error en conseguir informacion:', error);
       }
     };
 

@@ -15,9 +15,9 @@ function Settings() {
                     title: t('currency'),
                     value: settings.currency,
                     options: [
-                        { value: 'USD', label: 'USD (Dólar Estadounidense)' },
+                        { value: 'USD', label: 'USD (Dolar EUA)' },
                         { value: 'EUR', label: 'EUR (Euro)' },
-                        { value: 'MXN', label: 'MXN (Peso Mexicano)' }
+                        { value: 'MXN', label: 'MXN (Peso MEX)' }
                     ],
                     onChange: (value) => updateSettings({ currency: value })
                 },

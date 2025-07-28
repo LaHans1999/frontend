@@ -14,8 +14,7 @@ function CryptoTable() {
     const [currentPage, setCurrentPage] = useState(1);
     const [sortConfig, setSortConfig] = useState({ key: 'market_cap', direction: 'desc' });
     const itemsPerPage = 10;
-
-    // Función para obtener datos de la API
+// Función para obtener datos de la API
     const fetchCryptoData = async () => {
         try {
             setLoading(true);
@@ -47,8 +46,7 @@ function CryptoTable() {
         const interval = setInterval(fetchCryptoData, 60000); // Actualizar cada minuto
         return () => clearInterval(interval);
     }, []);
-
-    // Función para ordenar datos
+// Función para ordenar datos
     const sortData = (key) => {
         let direction = 'asc';
         if (sortConfig.key === key && sortConfig.direction === 'asc') {
@@ -57,7 +55,7 @@ function CryptoTable() {
         setSortConfig({ key, direction });
     };
 
-    // Función para formatear números grandes
+// Función para formatear números grandes
     const formatNumber = (num) => {
         if (num >= 1e9) return (num / 1e9).toFixed(2) + 'B';
         if (num >= 1e6) return (num / 1e6).toFixed(2) + 'M';
@@ -65,7 +63,7 @@ function CryptoTable() {
         return num.toFixed(2);
     };
 
-    // Filtrar y ordenar datos
+// Filtro y ordeno datos
     const filteredData = cryptoData
         .filter(coin =>
             coin.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -82,13 +80,12 @@ function CryptoTable() {
                 : b[sortConfig.key] - a[sortConfig.key];
         });
 
-    // Calcular datos paginados
+// Calcular datos paginados
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
     const totalPages = Math.ceil(filteredData.length / itemsPerPage);
-
-    // Componente de Paginación
+// Paginación
     const Pagination = () => (
         <div className="pagination">
             <button 
@@ -111,7 +108,7 @@ function CryptoTable() {
         </div>
     );
 
-    // Loading State
+// Loading / estado de espera
     if (loading) {
         return (
             <div className="crypto-container">
@@ -123,7 +120,7 @@ function CryptoTable() {
         );
     }
 
-    // Error State
+// Mensaje de Error 
     if (error) {
         return (
             <div className="crypto-container">

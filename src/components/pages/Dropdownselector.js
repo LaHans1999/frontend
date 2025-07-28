@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { FaCoins, FaHashtag, FaDollarSign, FaChartLine } from 'react-icons/fa';
-import './styles/Dropdownselector.css';
+import '../styles/Dropdownselector.css';
 
 function Dropdownselector({ setSelectedCoin, selectedCoin }) {
   const [coins, setCoins] = useState([]);
@@ -23,7 +23,7 @@ function Dropdownselector({ setSelectedCoin, selectedCoin }) {
         );
         setCoins(res.data);
       } catch (error) {
-        console.error('Error fetching coins:', error);
+        console.error('Error Procesando info:', error);
       }
     };
 
@@ -87,7 +87,7 @@ function Dropdownselector({ setSelectedCoin, selectedCoin }) {
                   <FaChartLine />
                 </div>
                 <div className="info-content">
-                  <h4>Variación 24h</h4>
+                  <h4>Variación en 24h</h4>
                   <p className={selectedCoin.price_change_percentage_24h >= 0 ? 'positive-change' : 'negative-change'}>
                     {selectedCoin.price_change_percentage_24h.toFixed(2)}%
                   </p>

@@ -1,5 +1,5 @@
 :root {
-  /* Light Mode */
+  /* Claro */
   --light-bg-primary: #f8fafc;
   --light-bg-secondary: #ffffff;
   --light-text-primary: #0f172a;
@@ -17,7 +17,7 @@
   --light-chart-grid: #e2e8f0;
   --light-card-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
 
-  /* Dark Mode */
+  /* Oscuro */
   --dark-bg-primary: #0f172a;
   --dark-bg-secondary: #1e293b;
   --dark-text-primary: #f1f5f9;
@@ -36,7 +36,7 @@
   --dark-card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
 }
 
-/* Aplicar modo claro por defecto */
+
 .app-container {
   --bg-primary: var(--light-bg-primary);
   --bg-secondary: var(--light-bg-secondary);
@@ -60,7 +60,6 @@
   transition: all 0.3s ease;
 }
 
-/* Aplicar modo oscuro */
 .app-container.dark-mode {
   --bg-primary: var(--dark-bg-primary);
   --bg-secondary: var(--dark-bg-secondary);
@@ -122,7 +121,7 @@
   color: var(--danger-color) !important;
 }
 
-/* Icons */
+/* Iconos */
 .icon {
   color: var(--text-secondary);
 }
@@ -131,7 +130,7 @@
   color: var(--accent-color);
 }
 
-/* Dark mode button */
+/* Dark  boton */
 .dark-mode-btn {
   background: transparent;
   border: none;
@@ -151,7 +150,7 @@
   stroke: var(--chart-grid);
 }
 
-/* Transitions */
+/* Transiciones */
 .header,
 .card,
 .coin-carousel,

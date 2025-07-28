@@ -15,14 +15,14 @@ function TopGainersTable() {
             params: {
               vs_currency: 'usd',
               order: 'market_cap_desc',
-              per_page: 50, // obtener más para luego filtrar los ganadores
+              per_page: 50,
               page: 1,
               price_change_percentage: '24h',
             },
           }
         );
 
-        // Filtrar top 5 con mayor cambio positivo en 24h
+// Filtrar top 5 con mayor cambio en 24h
         const sorted = response.data
           .filter(coin => coin.price_change_percentage_24h > 0)
           .sort(

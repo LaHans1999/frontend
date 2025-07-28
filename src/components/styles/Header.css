@@ -69,7 +69,7 @@
     margin: 0;
 }
 
-/* Específicamente para modo claro */
+/* solo modo claro */
 :root:not(.dark-mode) .header {
     background-color: var(--light-bg-secondary);
     border-bottom: 1px solid var(--light-border);
