@@ -8,7 +8,7 @@ function Settings() {
 
     const settingsConfig = [
         {
-            section: t('userPreferences'),
+            section: t('UserPreferences'),
             items: [
                 {
                     icon: <BsCurrencyExchange />,
@@ -34,7 +34,7 @@ function Settings() {
             ]
         },
         {
-            section: t('chartSettings'),
+            section: t('ChartSettings'),
             items: [
                 {
                     icon: <BsBarChart />,
