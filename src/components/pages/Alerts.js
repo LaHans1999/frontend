@@ -1,20 +1,31 @@
+/*consulta de 100 datos cada 5 min
+    alerta de movimientos significaticos de precio o volumen
+    tiene alertas animadas
+    hay searchbar para buscar criptomonedas
+    muestra errores 
+ */
+
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
-import { BsExclamationTriangleFill, BsArrowUpCircleFill, BsArrowDownCircleFill, BsGraphUp } from 'react-icons/bs';
+import { BsExclamationTriangleFill, BsGraphUp } from 'react-icons/bs';
 import '../styles/Alerts.css';
 
 const Alerts = () => {
+//Estado para guardar alertas generales y por volumen
     const [alerts, setAlerts] = useState([]);
     const [volumeAlerts, setVolumeAlerts] = useState([]);
+//Estado para mensajes de error 
     const [systemStatus, setSystemStatus] = useState({ status: 'ok', message: '' });
+//carga general y por tipo    
     const [isLoading, setIsLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
     const [loadingStates, setLoadingStates] = useState({
         significantChanges: true,
         volume: true
     });
-
+//Funcion para obtener datos de cripto desde la API 
     const fetchCryptoData = async () => {
         try {
             setIsLoading(true);
@@ -32,8 +43,7 @@ const Alerts = () => {
                     price_change_percentage: '1h,24h'
                 }
             });
-
-            // Procesar cambios significativos (>5% en 1h o >10% en 24h)
+// fILTRAMOS LAS CRIPTO CON CAMBIOS significativos (>5% en 1h o >10% en 24h)
             const significantChanges = response.data.filter(coin => 
                 Math.abs(coin.price_change_percentage_1h_in_currency) > 5 ||
                 Math.abs(coin.price_change_percentage_24h) > 10
@@ -47,8 +57,8 @@ const Alerts = () => {
                 timestamp: Date.now(),
                 type: coin.price_change_percentage_24h > 0 ? 'gain' : 'loss'
             }));
-
-            // Detectar volumen inusual (>100% sobre el promedio)
+           
+ // filtramos los que tienen volumen inusual (>100% sobre el promedio)
             const volumeSpikes = response.data
                 .filter(coin => coin.total_volume > coin.market_cap * 0.1)
                 .map(coin => ({
@@ -58,7 +68,7 @@ const Alerts = () => {
                     volume: coin.total_volume,
                     timestamp: Date.now()
                 }));
-
+//Actualiza estados
             setAlerts(significantChanges);
             setVolumeAlerts(volumeSpikes);
             setSystemStatus({ status: 'ok', message: 'Datos actualizados correctamente' });
@@ -66,6 +76,7 @@ const Alerts = () => {
                 significantChanges: false,
                 volume: false
             });
+//errores y desplegar mensaje del tipo de error
         } catch (error) {
             console.error('Error fetching data:', error);
             setSystemStatus({
@@ -77,6 +88,7 @@ const Alerts = () => {
         }
     };
 
+//cargamos datos cada 5 min.
     useEffect(() => {
         fetchCryptoData();
         const interval = setInterval(fetchCryptoData, 300000); // Actualizar cada 5 minutos
@@ -84,7 +96,7 @@ const Alerts = () => {
     }, []);
 
 
-
+//mientras se carga mostramos un loading
     const LoadingCard = () => (
         <div className="loading-card">
             <div className="loading-card-header">
@@ -123,7 +135,7 @@ const Alerts = () => {
             </div>
         );
     }
-
+//Filtramos segun la busqueda
     const filterBySearch = (items) => {
         if (!searchTerm) return items;
         const search = searchTerm.toLowerCase();
@@ -134,6 +146,7 @@ const Alerts = () => {
     };
 
     return (
+//utilizamos input para buscar 
         <div className="alerts-container">
             <div className="search-container">
                 <input
@@ -151,7 +164,6 @@ const Alerts = () => {
                     <p>{systemStatus.message}</p>
                 </div>
             )}
-
             <AlertCard title="Alertas" icon={<BsExclamationTriangleFill className="alert-icon warning" />}>
                 {loadingStates.significantChanges ? (
                     <>

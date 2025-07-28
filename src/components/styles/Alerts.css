@@ -1,3 +1,4 @@
+/*  Css container de busqueda en Alerts*/
 .search-container {
     grid-column: 1 / -1;
     margin-bottom: 20px;
@@ -24,7 +25,7 @@
 .search-input::placeholder {
     color: var(--text-secondary);
 }
-
+/*  Css container alerts */
 .alerts-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

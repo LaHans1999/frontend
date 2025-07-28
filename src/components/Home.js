@@ -1,5 +1,6 @@
-// src/components/Home.js
-import React, { useState, useEffect } from 'react';
+
+import React, { useState } from 'react';
+//componentes del dash
 import Dropdownselector from './pages/Dropdownselector';
 import Cryptolinechart from './pages/Cryptolinechart';
 import CryptoTable from './pages/CryptoTable';
@@ -12,11 +13,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 import CoinCarousel from './pages/CoinCarousel';
 import './styles/DarkMode.css';
 import './styles/MainContainer.css';
+import TopGainersTable from './pages/TopGainersTable';
 
 function Home({ setActiveTitle }) {
+//al seleccionar una moneda del dropdown, se guarda en el estado
   const [selectedCoin, setSelectedCoin] = useState(null);
+//saber que tarjeta esta seleccionada
   const [selectedCard, setSelectedCard] = useState(null);
-
+//tarjetas de navegacion
   const cards = [
     { title: 'Selector', icon: <BsListUl className="card_icon" /> },
     { title: 'Mercado', icon: <FaTable className="card_icon" /> },
@@ -26,6 +30,7 @@ function Home({ setActiveTitle }) {
     { title: 'Ajustes', icon: <BsGear className="card_icon" /> },
   ];
 
+//click de cualquier tarjeta, actualiza el estado global
   const handleCardClick = (index) => {
     setSelectedCard(index);
     setActiveTitle(cards[index].title);
@@ -52,8 +57,7 @@ function Home({ setActiveTitle }) {
           </div>
         ))}
       </div>
-
-      {/* 🎯 Transición de contenido usando AnimatePresence */}
+      
       <AnimatePresence mode="wait">
         {selectedCard !== null && (
           <motion.div
@@ -67,7 +71,7 @@ function Home({ setActiveTitle }) {
             {selectedCard === 0 && <Dropdownselector setSelectedCoin={setSelectedCoin} selectedCoin={selectedCoin} />}
             {selectedCard === 1 && <CryptoTable />}
             {selectedCard === 2 && selectedCoin && <Cryptolinechart coinId={selectedCoin.id} />}
-            {selectedCard === 3 && <CryptoTable />}
+            {selectedCard === 3 && <TopGainersTable/>}
             {selectedCard === 4 && <Alerts />}
             {selectedCard === 5 && <p>Settings</p>}
           </motion.div>

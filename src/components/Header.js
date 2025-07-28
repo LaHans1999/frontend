@@ -1,14 +1,16 @@
-// src/components/Header.js
 import React from 'react';
 import { FaSun, FaMoon } from 'react-icons/fa';
 import './styles/Header.css';
+// iconos de notificaciones y perfil
 import {
   BsFillBellFill,
   BsFillEnvelopeFill,
   BsPersonCircle,
 } from 'react-icons/bs';
-
-function Header({ OpenSideBar, darkMode, toggleDarkMode, activeTitle }) {
+// - darkMode: booleano que indica si está activado el modo oscuro
+// - toggleDarkMode: función que cambia entre light y dark
+// - activeTitle: título dinámico para mostrar en el header
+function Header({ darkMode, toggleDarkMode, activeTitle }) {
   return (
     <header className="header">
       <div className="header-left">

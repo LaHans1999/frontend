@@ -5,8 +5,10 @@ import { Area, AreaChart, ResponsiveContainer } from 'recharts';
 import '../styles/CoinCarousel.css';
 
 const CoinCarousel = () => {
+//Guardamos las 10 principales monedas
     const [coins, setCoins] = useState([]);
     useEffect(() => {
+// Función para obtener las monedas desde la API
         const fetchCoins = async () => {
             try {
                 const response = await axios.get(
@@ -22,12 +24,13 @@ const CoinCarousel = () => {
                         }
                     }
                 );
-                setCoins(response.data);
+                setCoins(response.data); //guardar datos
             } catch (error) {
                 console.error('Error fetching coins:', error);
             }
         };
 
+//llamada inicial actualizacin cada min<
         fetchCoins();
         const interval = setInterval(fetchCoins, 60000); // Actualizar cada minuto
         return () => clearInterval(interval);
@@ -60,7 +63,7 @@ const CoinCarousel = () => {
                         const sparklineData = coin.sparkline_in_7d?.price?.map((price, i) => ({
                             value: price
                         })) || [];
-                        
+                        //lista x3 para que el scroll sea largo
                         return (
                             <motion.div
                                 key={`${coin.id}-${index}`}
