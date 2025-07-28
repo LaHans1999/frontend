@@ -3,12 +3,14 @@ import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
 import '../styles/CryptoTable.css';
 import { BsSearch, BsArrowUp, BsArrowDown } from 'react-icons/bs';
+import { useSettings } from '../../context/SettingsContext';
 
 function CryptoTable() {
     const [cryptoData, setCryptoData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
+    const { formatPrice } = useSettings();
     const [currentPage, setCurrentPage] = useState(1);
     const [sortConfig, setSortConfig] = useState({ key: 'market_cap', direction: 'desc' });
     const itemsPerPage = 10;
@@ -208,12 +210,12 @@ function CryptoTable() {
                                             <span className="coin-symbol">{coin.symbol.toUpperCase()}</span>
                                         </div>
                                     </td>
-                                    <td>${coin.current_price.toLocaleString()}</td>
+                                    <td>{formatPrice(coin.current_price)}</td>
                                     <td className={coin.price_change_percentage_24h > 0 ? 'positive' : 'negative'}>
                                         {coin.price_change_percentage_24h.toFixed(2)}%
                                     </td>
-                                    <td>${formatNumber(coin.market_cap)}</td>
-                                    <td>${formatNumber(coin.total_volume)}</td>
+                                    <td>{formatPrice(coin.market_cap)}</td>
+                                    <td>{formatPrice(coin.total_volume)}</td>
                                 </motion.tr>
                             ))}
                         </AnimatePresence>

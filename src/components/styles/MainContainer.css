@@ -1,8 +1,30 @@
 .main-container {
-    background-color: var(--bg-primary);
+  .main-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    cursor: pointer;
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}or: var(--bg-primary);
     color: var(--text-primary);
     min-height: 100vh;
-    padding: 20px;
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
 }
 
 .main-title {
@@ -24,19 +46,48 @@
 }
 
 .card {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 20px;
+    border-radius: 1rem;
+    padding: 1.5rem;
     cursor: pointer;
-    box-shadow: 0 2px 4px var(--shadow-color);
+    box-shadow: var(--card-shadow);
     transition: all 0.3s ease;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card:first-child {
+    background: linear-gradient(135deg, #2962ff 0%, #2962ffbb 100%);
+}
+
+.card:nth-child(2) {
+    background: linear-gradient(135deg, #ff6d00 0%, #ff6d00cc 100%);
+}
+
+.card:nth-child(3) {
+    background: linear-gradient(135deg, #4caf50 0%, #4caf50cc 100%);
+}
+
+.card:nth-child(4) {
+    background: linear-gradient(135deg, #1d9ec2 0%, #1d9ec2cc 100%);
+}
+
+.card:nth-child(5) {
+    background: linear-gradient(135deg, #c62828 0%, #c62828cc 100%);
+}
+
+.card:nth-child(6) {
+    background: linear-gradient(135deg, #2e7d32 0%, #2e7d32cc 100%);
 }
 
 .card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 6px var(--shadow-color);
-    background-color: var(--card-hover);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+    filter: brightness(1.1);
 }
 
 .card-inner {
@@ -47,30 +98,169 @@
 }
 
 .card-inner h3 {
-    color: var(--text-primary);
-    font-size: 16px;
-    font-weight: 500;
+    color: white;
+    font-size: 1.125rem;
+    font-weight: 600;
     margin: 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .card h2 {
-    color: var(--text-secondary);
-    font-size: 14px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.875rem;
     margin: 0;
+    font-weight: 500;
 }
 
 .card_icon {
-    color: var(--text-primary);
-    font-size: 20px;
+    color: white;
+    font-size: 1.5rem;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
 }
 
 .card-active {
-    border: 2px solid var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
 }
 
 .card-active h2 {
-    color: var(--accent-color);
+    color: white;
     font-weight: 600;
+}
+
+/* Estilos para títulos de sección */
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.section-description {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+/* Estilos comunes para todas las tablas */
+.table-container {
+    background: var(--card-bg);
+    border-radius: 1rem;
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+    margin: 1rem 0;
+    border: 1px solid var(--border-color);
+}
+
+.table-container table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    color: var(--text-primary);
+}
+
+.table-container th {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font-weight: 600;
+    padding: 1rem;
+    text-align: left;
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.table-container td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.9375rem;
+    transition: background-color 0.2s ease;
+}
+
+.table-container tr:last-child td {
+    border-bottom: none;
+}
+
+.table-container tbody tr {
+    transition: all 0.2s ease;
+}
+
+.table-container tbody tr:hover {
+    background-color: var(--card-hover);
+    transform: translateX(4px);
+}
+
+.table-container .coin-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.table-container .coin-icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+}
+
+.table-container .coin-name-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.table-container .coin-symbol {
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+}
+
+.table-container .positive {
+    color: var(--success-color);
+    font-weight: 500;
+}
+
+.table-container .negative {
+    color: var(--danger-color);
+    font-weight: 500;
+}
+
+/* Estilos de paginación */
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+}
+
+.pagination-button {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+    color: var(--text-primary);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.pagination-button:hover:not(:disabled) {
+    background: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+}
+
+.pagination-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pagination-info {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
 }
 
 /* Ajustes para el carrusel en modo claro */

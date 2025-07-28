@@ -1,0 +1,198 @@
+.dropdown-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.dropdown-container label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    color: var(--text-primary);
+}
+
+#coin-select {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%231e3799' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+#coin-select:hover {
+    border-color: #1e3799;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#coin-select:focus {
+    outline: none;
+    border-color: #1e3799;
+    box-shadow: 0 0 0 2px rgba(30, 55, 153, 0.2);
+}
+
+#coin-select option {
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #1d2634;
+    color: #ffffff;
+}
+
+#coin-select optgroup {
+    background-color: #1d2634;
+    color: #ffffff;
+}
+
+/* Estilos para modo claro */
+.light #coin-select {
+    background-color: #f8f9fa;
+    border-color: #dee2e6;
+    color: #333333;
+}
+
+.light #coin-select:hover {
+    border-color: #1e3799;
+    background-color: #ffffff;
+}
+
+.light #coin-select option {
+    background-color: #f8f9fa;
+    color: #333333;
+    border-bottom: 1px solid #eee;
+}
+
+.light #coin-select option:hover,
+.light #coin-select option:focus,
+.light #coin-select option:active,
+.light #coin-select option:checked {
+    background-color: #1e3799 !important;
+    color: white !important;
+}
+
+/* Estilos para modo oscuro */
+.dark #coin-select {
+    background-color: #1d2634;
+    border-color: #2d3748;
+    color: #ffffff;
+}
+
+.dark #coin-select:hover {
+    border-color: #3498db;
+    background-color: #2d3748;
+}
+
+.dark #coin-select option {
+    background-color: #1d2634;
+    color: #ffffff;
+    border-bottom: 1px solid #2d3748;
+}
+
+.dark #coin-select option:hover,
+.dark #coin-select option:focus,
+.dark #coin-select option:active,
+.dark #coin-select option:checked {
+    background-color: #3498db !important;
+    color: white !important;
+}
+
+.coin-info-container {
+    margin-top: 2rem;
+}
+
+.coin-info-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.info-item:hover {
+    transform: translateY(-2px);
+}
+
+.info-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: #1e3799;
+    border-radius: 10px;
+    color: white;
+    font-size: 1.25rem;
+}
+
+.info-content h4 {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.25rem;
+}
+
+.info-content p {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.info-content .price {
+    color: #1e3799;
+    font-weight: 600;
+}
+
+.positive-change {
+    color: #2ecc71 !important;
+}
+
+.negative-change {
+    color: #e74c3c !important;
+}
+
+/* Modo oscuro */
+[data-theme='dark'] .info-icon {
+    background: #0a3d62;
+}
+
+[data-theme='dark'] .info-content .price {
+    color: #3498db;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .info-item {
+        padding: 0.75rem;
+    }
+}

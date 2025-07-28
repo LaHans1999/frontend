@@ -3,6 +3,7 @@ import { useState } from 'react';
 import './App.css';
 import Header from './components/Header';
 import Home from './components/Home';
+import { SettingsProvider } from './context/SettingsContext';
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -13,14 +14,16 @@ function App() {
   };
 
   return (
-    <div className={`grid-container ${darkMode ? 'dark' : 'light'}`}>
-      <Header 
-        darkMode={darkMode}
-        toggleDarkMode={toggleDarkMode}
-        activeTitle={activeTitle} // 🆕 se lo pasamos al Header
-      />
-      <Home setActiveTitle={setActiveTitle} /> {/* 🆕 pasamos setActiveTitle */}
-    </div>
+    <SettingsProvider>
+      <div className={`grid-container ${darkMode ? 'dark' : 'light'}`}>
+        <Header 
+          darkMode={darkMode}
+          toggleDarkMode={toggleDarkMode}
+          activeTitle={activeTitle}
+        />
+        <Home setActiveTitle={setActiveTitle} />
+      </div>
+    </SettingsProvider>
   );
 }
 

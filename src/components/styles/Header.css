@@ -15,32 +15,37 @@
 }
 
 .header-left {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
 }
 
 .header-left h3 {
-    color: var(--text-primary);
-    font-size: 1rem;
-    font-weight: 600;
-    margin: 0;
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
 }
 
 .header-right {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
 }
 
 .icon {
-    font-size: 1.1rem;
-    color: var(--text-primary);
-    cursor: pointer;
-    transition: all 0.2s ease;
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
 }
 
 .icon:hover {
+  color: var(--accent-color);
+  background-color: var(--bg-secondary);
+}.icon:hover {
     color: var(--accent-color);
 }
 

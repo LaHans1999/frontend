@@ -4,15 +4,19 @@ import axios from 'axios';
 import {
   LineChart,
   Line,
+  BarChart,
+  Bar,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
+import { useSettings } from '../../context/SettingsContext';
 
 function Cryptolinechart({ coinId }) {
   const [chartData, setChartData] = useState([]);
+  const { settings, formatPrice } = useSettings();
 
   useEffect(() => {
     const fetchChartData = async () => {
@@ -44,22 +48,41 @@ function Cryptolinechart({ coinId }) {
     fetchChartData();
   }, [coinId]);
 
+  const renderChart = () => {
+    const chartContent = settings.chartType === 'bar' ? (
+      <BarChart data={chartData}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="date" />
+        <YAxis domain={['auto', 'auto']} />
+        <Tooltip />
+        <Bar
+          dataKey="price"
+          fill="#8884d8"
+        />
+      </BarChart>
+    ) : (
+      <LineChart data={chartData}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="date" />
+        <YAxis domain={['auto', 'auto']} />
+        <Tooltip />
+        <Line
+          type="monotone"
+          dataKey="price"
+          stroke="#8884d8"
+          strokeWidth={2}
+        />
+      </LineChart>
+    );
+
+    return chartContent;
+  };
+
   return (
     <div style={{ width: '100%', height: 300, marginTop: '30px' }}>
       <h3 style={{ marginBottom: '10px' }}>Precio últimos 7 días</h3>
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={chartData}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="date" />
-          <YAxis domain={['auto', 'auto']} />
-          <Tooltip />
-          <Line
-            type="monotone"
-            dataKey="price"
-            stroke="#8884d8"
-            strokeWidth={2}
-          />
-        </LineChart>
+        {renderChart()}
       </ResponsiveContainer>
     </div>
   );

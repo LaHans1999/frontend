@@ -1,100 +1,196 @@
 .crypto-container {
-    padding: 20px;
-    background-color: var(--card-bg);
-    border-radius: 10px;
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border-radius: 16px;
     box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+    margin: 1rem 0;
 }
 
 .search-container {
-    margin-bottom: 20px;
+    margin-bottom: 1.5rem;
     position: relative;
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
 }
 
 .search-icon {
     position: absolute;
-    left: 12px;
+    left: 1rem;
     top: 50%;
     transform: translateY(-50%);
     color: var(--text-secondary);
+    font-size: 1.2rem;
 }
 
 .search-input {
     width: 100%;
-    max-width: 400px;
-    padding: 12px 12px 12px 40px;
-    border: 2px solid var(--border-color);
+    padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+    border: none;
     border-radius: 8px;
-    background-color: var(--input-bg);
+    background: transparent;
     color: var(--text-primary);
-    font-size: 0.9rem;
+    font-size: 1rem;
     transition: all 0.3s ease;
 }
 
 .search-input:focus {
     outline: none;
-    border-color: var(--accent-color);
-    box-shadow: 0 0 0 2px var(--accent-color-transparent);
 }
 
 .table-container {
     overflow-x: auto;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    background-color: var(--card-bg);
+    margin-bottom: 1.5rem;
+    border-radius: 12px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
 }
 
 .crypto-table {
     width: 100%;
-    border-collapse: collapse;
-    text-align: left;
+    border-collapse: separate;
+    border-spacing: 0;
 }
 
 .crypto-table th,
 .crypto-table td {
-    padding: 16px;
+    padding: 1rem;
     border-bottom: 1px solid var(--border-color);
     color: var(--text-primary);
 }
 
 .crypto-table th {
-    background-color: var(--header-bg);
+    background-color: var(--bg-secondary);
     font-weight: 600;
     cursor: pointer;
     user-select: none;
+    transition: all 0.2s ease;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.crypto-table th:first-child {
+    border-top-left-radius: 12px;
+}
+
+.crypto-table th:last-child {
+    border-top-right-radius: 12px;
+}
+
+.crypto-table tbody tr {
     transition: background-color 0.2s ease;
 }
 
-.crypto-table th:hover {
-    background-color: var(--header-hover-bg);
+.crypto-table tbody tr:hover {
+    background-color: var(--bg-secondary);
 }
 
-.crypto-table tbody tr:hover {
-    background-color: var(--row-hover-bg);
+.crypto-table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 12px;
+}
+
+.crypto-table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 12px;
 }
 
 .coin-info {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 1rem;
 }
 
 .coin-icon {
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
 }
 
 .coin-name-container {
     display: flex;
     flex-direction: column;
+    gap: 0.25rem;
 }
 
 .coin-name {
     font-weight: 500;
+    color: var(--text-primary);
 }
 
 .coin-symbol {
     color: var(--text-secondary);
-    font-size: 0.85rem;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+}
+
+/* Estilos para modo claro */
+.light .crypto-container {
+    background: #ffffff;
+}
+
+.light .search-container {
+    background: #f8f9fa;
+}
+
+.light .crypto-table th {
+    background-color: #f8f9fa;
+}
+
+.light .crypto-table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* Estilos para modo oscuro */
+.dark .crypto-container {
+    background: #1d2634;
+}
+
+.dark .search-container {
+    background: #2d3748;
+}
+
+.dark .crypto-table th {
+    background-color: #2d3748;
+}
+
+.dark .crypto-table tbody tr:hover {
+    background-color: #2d3748;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .crypto-container {
+        padding: 1rem;
+    }
+
+    .search-container {
+        padding: 0.25rem;
+    }
+
+    .search-input {
+        padding: 0.5rem 0.5rem 0.5rem 2rem;
+        font-size: 0.875rem;
+    }
+
+    .crypto-table th,
+    .crypto-table td {
+        padding: 0.75rem;
+    }
+
+    .coin-icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .coin-name {
+        font-size: 0.875rem;
+    }
+
+    .coin-symbol {
+        font-size: 0.75rem;
+    }
 }
 
 .positive {

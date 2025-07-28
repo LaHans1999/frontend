@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useSettings } from '../../context/SettingsContext';
 
 function TopGainersTable() {
   const [topGainers, setTopGainers] = useState([]);
+  const { t } = useSettings();
 
   useEffect(() => {
     const fetchTopGainers = async () => {
@@ -39,38 +41,43 @@ function TopGainersTable() {
   }, []);
 
   return (
-    <div className="top-gainers-table" style={{ marginTop: '40px' }}>
-      <h3 style={{ marginBottom: '10px' }}>Top 5 ganadores del mercado</h3>
-      <p style={{ marginBottom: '20px', color: '#888' }}>Tabla que muestre las 5 criptomonedas con mayor variación positiva en las últimas 24h</p>
-      <table style={{ width: '100%', borderCollapse: 'collapse', color: 'white' }}>
-        <thead>
-          <tr style={{ textAlign: 'left', borderBottom: '1px solid #555' }}>
-            <th>#</th>
-            <th>Nombre</th>
-            <th>Precio</th>
-            <th>Variación 24h</th>
-          </tr>
-        </thead>
-        <tbody>
-          {topGainers.map((coin, index) => (
-            <tr key={coin.id} style={{ borderBottom: '1px solid #333' }}>
-              <td>{index + 1}</td>
-              <td>
-                <img
-                  src={coin.image}
-                  alt={coin.name}
-                  style={{ width: 20, verticalAlign: 'middle', marginRight: 8 }}
-                />
-                {coin.name} ({coin.symbol.toUpperCase()})
-              </td>
-              <td>${coin.current_price.toFixed(2)}</td>
-              <td style={{ color: '#4caf50' }}>
-                {coin.price_change_percentage_24h.toFixed(2)}%
-              </td>
+    <div className="top-gainers-table">
+      <h3 className="section-title">{t('topGainersTitle')}</h3>
+      <p className="section-description">{t('topGainersDescription')}</p>
+      <div className="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>{t('name')}</th>
+              <th>{t('price')}</th>
+              <th>{t('change24h')}</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {topGainers.map((coin, index) => (
+              <tr key={coin.id}>
+                <td>{index + 1}</td>
+                <td className="coin-info">
+                  <img
+                    src={coin.image}
+                    alt={coin.name}
+                    className="coin-icon"
+                  />
+                  <div className="coin-name-container">
+                    <span className="coin-name">{coin.name}</span>
+                    <span className="coin-symbol">{coin.symbol.toUpperCase()}</span>
+                  </div>
+                </td>
+                <td>${coin.current_price.toFixed(2)}</td>
+                <td className="positive">
+                  +{coin.price_change_percentage_24h.toFixed(2)}%
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

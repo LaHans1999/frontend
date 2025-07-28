@@ -1,37 +1,39 @@
 :root {
   /* Light Mode */
-  --light-bg-primary: #f0f2f5;
+  --light-bg-primary: #f8fafc;
   --light-bg-secondary: #ffffff;
-  --light-text-primary: #1e293b;
-  --light-text-secondary: #475569;
-  --light-border: #cbd5e1;
+  --light-text-primary: #0f172a;
+  --light-text-secondary: #334155;
+  --light-border: #e2e8f0;
   --light-card-bg: #ffffff;
-  --light-card-hover: #f8fafc;
+  --light-card-hover: #f1f5f9;
   --light-accent: #2563eb;
-  --light-success: #16a34a;
+  --light-success: #15803d;
   --light-danger: #dc2626;
-  --light-shadow: rgba(0, 0, 0, 0.1);
+  --light-shadow: rgba(0, 0, 0, 0.05);
   --light-header-bg: #ffffff;
-  --light-carousel-bg: rgba(255, 255, 255, 0.95);
+  --light-carousel-bg: rgba(255, 255, 255, 0.98);
   --light-carousel-item-bg: #ffffff;
   --light-chart-grid: #e2e8f0;
+  --light-card-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
 
   /* Dark Mode */
-  --dark-bg-primary: #1a1a1a;
-  --dark-bg-secondary: #242424;
-  --dark-text-primary: #e9ecef;
-  --dark-text-secondary: #adb5bd;
-  --dark-border: #2d3436;
-  --dark-card-bg: #242424;
-  --dark-card-hover: #2d3436;
-  --dark-accent: #00b4d8;
-  --dark-success: #00b894;
-  --dark-danger: #d63031;
+  --dark-bg-primary: #0f172a;
+  --dark-bg-secondary: #1e293b;
+  --dark-text-primary: #f1f5f9;
+  --dark-text-secondary: #94a3b8;
+  --dark-border: #334155;
+  --dark-card-bg: #1e293b;
+  --dark-card-hover: #334155;
+  --dark-accent: #3b82f6;
+  --dark-success: #22c55e;
+  --dark-danger: #ef4444;
   --dark-shadow: rgba(0, 0, 0, 0.3);
-  --dark-header-bg: #242424;
-  --dark-carousel-bg: rgba(26, 26, 26, 0.95);
-  --dark-carousel-item-bg: #242424;
-  --dark-chart-grid: #2d3436;
+  --dark-header-bg: #1e293b;
+  --dark-carousel-bg: rgba(15, 23, 42, 0.98);
+  --dark-carousel-item-bg: #1e293b;
+  --dark-chart-grid: #334155;
+  --dark-card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
 }
 
 /* Aplicar modo claro por defecto */
@@ -51,6 +53,7 @@
   --carousel-bg: var(--light-carousel-bg);
   --carousel-item-bg: var(--light-carousel-item-bg);
   --chart-grid: var(--light-chart-grid);
+  --card-shadow: var(--light-card-shadow);
 
   background-color: var(--bg-primary);
   color: var(--text-primary);
@@ -74,6 +77,7 @@
   --carousel-bg: var(--dark-carousel-bg);
   --carousel-item-bg: var(--dark-carousel-item-bg);
   --chart-grid: var(--dark-chart-grid);
+  --card-shadow: var(--dark-card-shadow);
 }
 
 /* Header Styles */
