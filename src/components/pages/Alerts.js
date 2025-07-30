@@ -7,7 +7,7 @@
 
 
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../../config/axios';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BsExclamationTriangleFill, BsGraphUp } from 'react-icons/bs';
 import '../styles/Alerts.css';
@@ -34,7 +34,7 @@ const Alerts = () => {
                 volume: true
             });
             
-            const response = await axios.get('https://api.coingecko.com/api/v3/coins/markets', {
+            const response = await api.get('/coins/markets', {
                 params: {
                     vs_currency: 'usd',
                     order: 'price_change_percentage_24h_desc',
